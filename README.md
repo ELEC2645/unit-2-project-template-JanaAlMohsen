@@ -1,37 +1,40 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=22061353)
-# ELEC2645 Unit 2 Project Template
+# ELEC2645 Unit 2 – RC Circuit Analysis CLI (C++)
 
-** PLEASE DELETE THIS README AND REPLACE IT WITH YOUR OWN README.md FILE DESCRIBING YOUR PROJECT **
+## Overview
+This project is a command-line C++ application that analyses the behaviour of a first-order RC circuit.  
+It allows the user to enter R, C, and input voltage values, then perform common RC calculations and simulations using a simple menu interface.
+This project demonstrates the application of circuit theory, numerical simulation, and modular C++ programming within an embedded systems style environment.
 
+Main features:
+- Enter / edit RC parameters (R, C, Vin)
+- Calculate time constant: τ = R·C
+- Calculate cutoff frequency: fc = 1 / (2πRC)
+- Simulate capacitor charging voltage Vc(t)
+- Simulate capacitor discharging voltage Vc(t)
+- Export voltage–time simulation data to a CSV file for plotting in Excel
 
-This is the basic code for a command line application which you should use for your Unit 2 project.
+The program is designed with a modular structure:
+- `main.c` handles menu display, input validation, and dispatching menu options.
+- `funcs.c` contains the RC maths, parameter storage, and menu “handler” functions.
+- `funcs.h` declares shared structures/constants and function prototypes.
 
-The code has separated the menu handling code in `main.c` and the function implementations in `funcs.c`. You should add your code to `funcs.c` (or you can create new files if you wish), and update `main.c` to call your functions from the menu.
+---
 
+## Files
+- `main.c` – menu system / user interaction
+- `funcs.c` – RC calculations, input helpers, CSV export
+- `funcs.h` – shared header (struct + function prototypes)
+- `Makefile` – build commands
+- `test.sh` – provided compilation test script (autograder-style check)
 
-### 1 Run code
+---
 
-You can build the code as we have been using in the labs with 
-`gcc main.c funcs.c -o main.out -lm` (the `-lm` is required to link the math library). You can also use `make -B` to force a rebuild using the provided `Makefile`.
+## Compile and Run
 
-Then run the code with `./main.out`
-
-
-### 2 The assignment
-
-Please read the assignment brief on the Minerva page for details of what you need to implement. 
-
-
-
-### 3 Test command
-
-The `test.sh` script is provided to check that your code compiles correctly. This is what the autograder will use to check your submission. You can run it with `bash test.sh` or `./test.sh` or just `make test`. 
-
-You do not need to modify this script, but you can look at it to see what it does.
-
-
-### 4 Submit Solution
-
-Use the same method as previous labs to commit and push your code to your GitHub repository for the autograder to check. 
-
-In your final journal post, please include a link to your GitHub repository containing your code  *and* a zip file of your code as an attachment.
+### Compile the program using gcc:
+```
+gcc main.c funcs.c -o main.out -lm
+```
+### After successful compilation, run the executable:
+```
+./main.out
